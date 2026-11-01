@@ -1,5 +1,6 @@
 package com.lsb.trocatela
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun btLancamentoClicked(view: View) {
-    
+        val intent = Intent(this, LancamentoActivity::class.java)
+        startActivity(intent)
     }
 }
