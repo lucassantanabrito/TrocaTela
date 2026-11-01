@@ -1,5 +1,6 @@
 package com.lsb.trocatela
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -7,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.net.toUri
 
 class ConfirmarActivity : AppCompatActivity() {
 
@@ -34,6 +36,14 @@ class ConfirmarActivity : AppCompatActivity() {
     }
 
     fun btSmsOnClick(view: View) {
+        val smsBody = "Cod: ${tvCod.text} - Qtd: ${tvQtd.text} - Valor: ${tvValor.text}"
+        val smsNumber = "+5586999213456"
 
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = "smsto:$smsNumber".toUri()
+            putExtra("sms_body", smsBody)
+        }
+
+        startActivity(intent)
     }
 }
